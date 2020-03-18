@@ -10,128 +10,60 @@
     <script src="../js/zepto.min.js"></script>
     <script src="../js/zepto.weui.js"></script>
 
-    <script src="../js/iscroll-lite.js"></script>
+<!--    <script src="../js/iscroll-lite.js"></script>-->
 
     <script>
         $(function () {
-
-
             $('#t1').tab({
                 defaultIndex: 0,
                 activeClass: 'tab-green',
                 onToggle: function (index) {
                     console.log('index' + index);
+                      $("index1").html("我是第2个1")
                 }
             })
 
-            $('#t2').tab({
-                defaultIndex: 1,
-                activeClass: 'tab-red'
-            })
-
-            $('#t3').tab({
-                defaultIndex: 2,
-                activeClass: 'tab-blue'
-            })
-
-            $('#t4').tab({defaultIndex: 1, activeClass: "bg-green"});
-
-            $('#t5').tab({defaultIndex: 2, activeClass: "bg-red"});
-
         })
+
+        $(function(){
+            $('.weui-navbar__item').on('click', function () {
+                $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+                $($(this).attr("href")).show().siblings('.weui-tab__content').hide();
+            });
+
+        });
+
 
     </script>
 
 </head>
 
-<body ontouchstart>
+<body >
 <div class="container">
-    <!--<div class="page-hd">
-        <h1 class="page-hd-title">
-            navbar/今日头条导航
-        </h1>
-        <p class="page-hd-desc">今日头条导航需要加载iscroll-lite.js插件,这里使用的是精简版,源码未压缩可自行修改其他颜色</p>
-    </div>-->
-
-
-    <div class="weui-tab" id="t1" style="height:44px;">
+    <div class="weui-tab" id="t1" style="height:100%">
         <div class="weui-navbar">
-            <div class="weui-navbar__item">
+            <div id="index0" class="weui-navbar__item">
                 模式介紹
             </div>
-            <div class="weui-navbar__item">
+            <div   class="weui-navbar__item">
                 奖金榜
             </div>
-            <div class="weui-navbar__item">
+            <div id="index2" class="weui-navbar__item">
                 个人战绩
             </div>
         </div>
+        <div class="weui-tab__panel" height="100%">
+            <div id="tab1" class="weui-tab__content" style="display: block;">1111</div>
+            <div id="tab2" class="weui-tab__content" height="100%">
+                <iframe src="../signUPModule/styled-card.html" width="100%" height="800px" frameborder="0">
 
+                </iframe>
+            </div>
+            <div id="tab3" class="weui-tab__content">3333</div>
+        </div>
     </div>
 
-    <!--<div class="weui-footer weui-footer_fixed-bottom">
-        <p class="weui-footer__links">
-            <a href="../index.html" class="weui-footer__link">WeUI首页</a>
-        </p>
-        <p class="weui-footer__text">Copyright &copy; Yoby</p>
-    </div>-->
 </div>
 
-<script>
-    //有4个颜色配置
-    $(document).on("click", "#show-actions", function () {
-        $.actions({
-            title: "选择操作",
-            onClose: function () {
-                console.log("close");
-            },
-            actions: [
-                {
-                    text: "发布",
-                    className: "color-primary",
-                    onClick: function () {
-                        $.alert("发布成功");
-                    }
-                },
-                {
-                    text: "编辑",
-                    className: "color-warning",
-                    onClick: function () {
-                        $.alert("你选择了“编辑”");
-                    }
-                },
-                {
-                    text: "删除",
-                    className: 'color-danger',
-                    onClick: function () {
-                        $.alert("你选择了“删除”");
-                    }
-                }
-            ]
-        });
-    });
-
-    $(document).on("click", "#show-actions-bg", function () {
-        $.actions({
-            actions: [
-                {
-                    text: "发布",
-                    className: "bg-primary",
-                },
-                {
-                    text: "编辑",
-                    className: "bg-warning",
-                },
-                {
-                    text: "删除",
-                    className: 'bg-danger',
-                }, {
-                    text: "删除",
-                    className: 'bg-success',
-                }
-            ]
-        });
-    });
-</script>
 </body>
 </html>
