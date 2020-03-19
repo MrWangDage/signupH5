@@ -15,58 +15,56 @@
     <script src=' ../zoujingli-sui-mobile-master/sui-mobile/dist/js/sm.js'></script>
 
     <script>
+        function zan(e) {
+            /*debugger
+            $("#zan").html("已赞")*/
+            $.ajax({
+                url: "/givePraise",
+                data: {
+                    userId:  e.id,
+                    itemId:e.id
+                },
+                type: "post",
+                success: function (text) {
 
+                },
+                error: function () {
+
+                }
+            });
+        }
+
+        function comment(e) {
+
+        }
 
     </script>
 
 </head>
 
 <body ontouchstart>
-<div class="container" >
-<div id="page-styled-card" class="page" style="height:100%">
-    <div class="content">
-        <div class="content-block-title">风格卡片</div>
-        <div class="card demo-card-header-pic">
-            <div style="background-image:url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
-            <div class="card-content">
-                <div class="card-content-inner">
-                    <p class="color-gray">发表于 2015/01/15</p>
-                    <p>此处是内容...</p>
+<div class="container">
+    <div id="page-styled-card" class="page" style="height:100%">
+        <div class="content">
+            <!--<div class="content-block-title">风格卡片</div>-->
+            <div class="card demo-card-header-pic">
+                <div style="background-image:url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)"
+                     valign="bottom" class="card-header color-white no-border">旅途的山
                 </div>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="link">赞</a>
-                <a href="#" class="link">更多</a>
-            </div>
-        </div>
-        <div class="card demo-card-header-pic">
-            <div style="background-image:url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
-            <div class="card-content">
-                <div class="card-content-inner">
-                    <p class="color-gray">发表于 2015/01/15</p>
-                    <p>此处是内容...</p>
+                <div class="card-content"
+                     style="background-image: url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)">
+                    <div class="card-content-inner">
+                        <p class="color-gray">日期</p>
+                        <p>此处是内容...</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="link">赞</a>
-                <a href="#" class="link">更多</a>
-            </div>
-        </div>
-        <div class="card demo-card-header-pic">
-            <div style="background-image:url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
-            <div class="card-content">
-                <div class="card-content-inner">
-                    <p class="color-gray">发表于 2015/01/15</p>
-                    <p>此处是内容...</p>
+                <div class="card-footer">
+                    <a href="#" onclick="zan(this)" id="" class="link">赞</a>
+                    <a href="#" onclick="comment(this)" class="link">评论</a>
                 </div>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="link">赞</a>
-                <a href="#" class="link">更多</a>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 </body>
