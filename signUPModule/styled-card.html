@@ -15,25 +15,67 @@
     <script src=' ../zoujingli-sui-mobile-master/sui-mobile/dist/js/sm.js'></script>
 
     <script>
-        function zan(e) {
-            /*debugger
-            $("#zan").html("已赞")*/
-            $.ajax({
-                url: "/givePraise",
-                data: {
-                    userId:  e.id,
-                    itemId:e.id
-                },
-                type: "post",
-                success: function (text) {
 
-                },
-                error: function () {
+        $(function () {
+            $("input,select,textarea").blur(function () {
+                setTimeout(() => {
+                    const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+                    window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+                }, 100);
+            })
+        });
 
-                }
-            });
-        }
+        /*  $(function(){
+              $.ajax({
+                  url: "/getbornus",
+                  data: {
+                      userId:  e.id
+                  },
+                  type: "post",
+                  success: function (text) {
+                      let html="";
+                      for (let i = 0; i < 3; i++) {
+                          html+='<div class="card demo-card-header-pic">'+
+                              '                <div style="background-image:url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)"'+
+                              '                     valign="bottom" class="card-header color-white no-border">'+text.list[i].date+
+                              '                </div>'+
+                              '                <div class="card-content"'+
+                              '                     style="background-image: url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)">'+
+                              '                    <div class="card-content-inner">'+
+                              '                        <p class="color-gray">日期</p>'+
+                              '                        <p>此处是内容...</p>'+
+                              '                    </div>'+
+                              '                </div>'+
+                              '                <div class="card-footer">'+
+                              '                    <a href="#" onclick="zan(this)" id="" class="link">赞</a>'+
+                              '                    <a href="#" onclick="comment(this)" class="link">评论</a>'+
+                              '                </div>'+
+                              '            </div>';
+                      }
+                  },
+                  error: function () {
 
+                  }
+              });
+          })
+
+          function zan(e) {
+              $.ajax({
+                  url: "/givePraise",
+                  data: {
+                      userId:  e.id,
+                      itemId:e.id
+                  },
+                  type: "post",
+                  success: function (text) {
+                  $("#zan").html("已赞")
+                  },
+                  error: function () {
+
+                  }
+              });
+          }*/
+        //评论弹框
         function comment(e) {
 
         }
@@ -60,12 +102,60 @@
                 </div>
                 <div class="card-footer">
                     <a href="#" onclick="zan(this)" id="" class="link">赞</a>
-                    <a href="#" onclick="comment(this)" class="link">评论</a>
+                    <a href="javascript:;" class="open-popup"  data-target="#half" class="link">评论</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!--commentList start-->
+<div id="half" class='weui-popup__container popup-bottom'>
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="toolbar">
+            <div class="toolbar-inner">
+                <a href="javascript:;" class="picker-button close-popup">关闭</a>
+                <h1 class="title">评论列表</h1>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="weui-cells weui-cells_form">
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--commentList end-->
 </body>
 </html>
+
+<script>
+    $(document).on("open", ".weui-popup-modal", function () {
+        console.log("open popup");
+    }).on("close", ".weui-popup-modal", function () {
+        console.log("close popup");
+    });
+
+    /*   $("#about").popup();打开
+       $.closePopup() ;关闭*/
+
+
+    $(document).on("click", "#n", function () {
+        $.noti({
+            title: "中奖啦！",
+            text: "点击领取红包！",
+            // media: "<img src='./images/present.png' />",
+            data: {
+                message: "没有!"
+            },
+            time: 3000,
+            onClick: function (data) {
+                $.alert(data.message);
+            }
+        });
+    });
+
+</script>
