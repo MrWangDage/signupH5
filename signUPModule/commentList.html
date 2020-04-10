@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/weuix.css"/>
 
     <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
     <script>
         var tree = [{
             "id": "1234",
@@ -209,7 +210,7 @@
                     '            <div class="userinfo"><strong class="nickname">' + tree[i].fromName + '</strong> <img class="avatar"' +
                     '                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADs0lEQVRogcVa7ZHjIAx1CSkhJaSElJASXEJKcAcpwSWkhPwHHpTgElxC7sdJnOwQI2TvnmY8O5M16OmDJwHuugMlpXRKKZ2dc5cQwg3A3Xs/AOi999eU0vlIfYeIc+4C4B5jTABmAO/aE2N8AXh476//BXRK6QSgJ9AS3Ey/PQGMBHIAMMYYXwR8beQM4PFr4L331xXwGcCTUuSknYMMm6Qx3vvhx4A75y4SeIzxFUK4aUF/E+/9laLFhkwhhNtRuKWSWXj8vhf4WtYOOiwaAO4C/KMGPKV0CiHcOPfFc9csWtKXo7wX/EN6vQL8TO/XmGiqeZcizkYkK3j2xFzLSeL8nGJMkyGEG/2vXxsXY0xb0ZQp1RwJmfM18FQHZlZUK1Yt3iW6zumrAi8B1UKdUjqJhVddH2LcWYzbTE1psIqdKPwqiyk92PNNrERr5g1g1uqpvitf1ACiiqvzTHk883+v1bWZFcL7m2EVk04A3tYmjYlCw/kyYkV9wvuTNh20KfBNhM5RqW/8+j6HSBNOMWamCJiqsqBqFcMQK306TdCVKvdZmEmcc5dG7F3XdR1V66a2QaR5n38UoXy2AODJrH09p0QLCVBRXKaRlU1Eq9G3jFvrbXFAMY2sbNJCgyWxRpDx5tRl9jEASDtTiCOoom0xbsx6mV8tXd8BLMT53LSlXBjOvYal9z6KhVojsGCv4qpWijUFWHgNtJLHogC2VsPSRJboUddrquQLp4t2takGdF2mtMlIwWNOg0ZZVHDmVev+U3hD7QDpfQsBiLXTf+8vlGIZb638LB8VfC8dttaDPelD46eFvr0VVeRklQjkPteyj5ARzw7fQ6XrSWvvHpA+n2tu7zqgiVX9lLVxrI4XpwS9ZWJtY2ZtHLsubyvL+xYRmuamjsarWmNhwB76LKdfa1FKKZ2oEOZTt5pnOVL0V31ILHeNX3svzflLCTSP0XSVNHZxLxBjfHnvhy3j8W/Pvq1DrIVFmAToovLWjpScJe8F3jIyK/D5nLYaMXH+8sbfy7lhfZVkBd1qDIDn6uBY1/XK80jxTEeCNhjTdo8mwvYG0B99I1MTygRO16dJ/8oTpk2LReRCr90jaCYbzGE0CMSVluXUuyjrSwlrtVboeEpnHZq2tAmZpCFHXIcW7tbmn3BQFgqxrAUTGj8bcM5dBD3/6PXtVykYkrkbwOi9H2j93MnD/LnBx+cJlC7nXwG+Fv5soABs65kAPJxzl9+m56qIT216isADdMlNgM9H6vsDQwYeNVuvb4wAAAAASUVORK5CYII=">' +
                     '            </div>' +
-                    '            <div  onclick="replyAlert(event,this)" id='+tree[i].id+' class="weui-comment-msg"><span class="status"></span> ' + tree[i].content + '</div>' +
+                    '            <div  onclick="replyAlert(event,this)" id=' + tree[i].id + ' class="weui-comment-msg"><span class="status"></span> ' + tree[i].content + '</div>' +
                     '            <p class="time">' + tree[i].updateTime + '</p>';
                 if (tree[i].children.length > 0) {
                     reply(tree[i].children);
@@ -226,7 +227,7 @@
                 htmlTemp +=
                     '<div class="weui-comment-reply">' +
                     '                <div class="nickname">' + children[i].fromName + ' 回复-> <span >' + children[i].toName + '</span>' + '</div>' +
-                    '                <div  onclick="replyAlert(event,this)" class="weui-comment-msg" id='+children[i].id+'> ' + children[i].content + '</div>' +
+                    '                <div  onclick="replyAlert(event,this)" class="weui-comment-msg" id=' + children[i].id + '> ' + children[i].content + '</div>' +
                     '                <p class="time">' + children[i].updateTime + '</p></div>';
                 if (children[i].children.length > 0) {
                     reply(children[i].children);
@@ -234,52 +235,43 @@
             }
         }
 
-        function replyAlert(e,item) {
+        function replyAlert(e, item) {
             console.log(item);
+            $("#half").popup();
         }
     </script>
 </head>
 
 <body ontouchstart>
+<!--<div class='page-bd-15'>-->
+<!--    <a href="javascript:;" class="weui-btn weui-btn_primary open-popup" data-target="#half">显示底部的Popup</a>-->
+<!--</div>-->
+
+<div id="half" class='weui-popup__container popup-bottom'>
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="toolbar">
+            <div onclick="issueComment()" class="toolbar-inner">
+                <a href="javascript:;" class="picker-button close-popup">发布并关闭</a>
+                <h1 id="_comment_content" class="title">评论</h1>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">内容</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入评论内容" type="tel">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 <div class="page-bd-15">
     <ul class="weui-comment" id="dsaasd">
-        <!--<li class="weui-comment-item">
-            <div class="weui-comment-li">
-                <span class="check checked">
-                    <i class="weui-comment-icon"></i>
-                    <span class="weui-comment-num">11</span>
-                </span>
-            </div>
-            <div class="userinfo"><strong class="nickname">老师</strong> <img class="avatar"
-                                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADs0lEQVRogcVa7ZHjIAx1CSkhJaSElJASXEJKcAcpwSWkhPwHHpTgElxC7sdJnOwQI2TvnmY8O5M16OmDJwHuugMlpXRKKZ2dc5cQwg3A3Xs/AOi999eU0vlIfYeIc+4C4B5jTABmAO/aE2N8AXh476//BXRK6QSgJ9AS3Ey/PQGMBHIAMMYYXwR8beQM4PFr4L331xXwGcCTUuSknYMMm6Qx3vvhx4A75y4SeIzxFUK4aUF/E+/9laLFhkwhhNtRuKWSWXj8vhf4WtYOOiwaAO4C/KMGPKV0CiHcOPfFc9csWtKXo7wX/EN6vQL8TO/XmGiqeZcizkYkK3j2xFzLSeL8nGJMkyGEG/2vXxsXY0xb0ZQp1RwJmfM18FQHZlZUK1Yt3iW6zumrAi8B1UKdUjqJhVddH2LcWYzbTE1psIqdKPwqiyk92PNNrERr5g1g1uqpvitf1ACiiqvzTHk883+v1bWZFcL7m2EVk04A3tYmjYlCw/kyYkV9wvuTNh20KfBNhM5RqW/8+j6HSBNOMWamCJiqsqBqFcMQK306TdCVKvdZmEmcc5dG7F3XdR1V66a2QaR5n38UoXy2AODJrH09p0QLCVBRXKaRlU1Eq9G3jFvrbXFAMY2sbNJCgyWxRpDx5tRl9jEASDtTiCOoom0xbsx6mV8tXd8BLMT53LSlXBjOvYal9z6KhVojsGCv4qpWijUFWHgNtJLHogC2VsPSRJboUddrquQLp4t2takGdF2mtMlIwWNOg0ZZVHDmVev+U3hD7QDpfQsBiLXTf+8vlGIZb638LB8VfC8dttaDPelD46eFvr0VVeRklQjkPteyj5ARzw7fQ6XrSWvvHpA+n2tu7zqgiVX9lLVxrI4XpwS9ZWJtY2ZtHLsubyvL+xYRmuamjsarWmNhwB76LKdfa1FKKZ2oEOZTt5pnOVL0V31ILHeNX3svzflLCTSP0XSVNHZxLxBjfHnvhy3j8W/Pvq1DrIVFmAToovLWjpScJe8F3jIyK/D5nLYaMXH+8sbfy7lhfZVkBd1qDIDn6uBY1/XK80jxTEeCNhjTdo8mwvYG0B99I1MTygRO16dJ/8oTpk2LReRCr90jaCYbzGE0CMSVluXUuyjrSwlrtVboeEpnHZq2tAmZpCFHXIcW7tbmn3BQFgqxrAUTGj8bcM5dBD3/6PXtVykYkrkbwOi9H2j93MnD/LnBx+cJlC7nXwG+Fv5soABs65kAPJxzl9+m56qIT216isADdMlNgM9H6vsDQwYeNVuvb4wAAAAASUVORK5CYII=">
-            </div>
-            <div class="weui-comment-msg"><span class="status"></span> 为什么上课迟到?</div>
-            <p class="time">昨天 </p>
-
-            <div class="weui-comment-reply">
-                <div class="nickname">学生A回复</div>
-                <div class="weui-comment-msg"> 睡过头了，老师.</div>
-                <p class="time">今天早上</p>
-            </div>
-        </li>
-        <li class="weui-comment-item">
-            <div class="weui-comment-li"><span class="check"> <i class="weui-comment-icon"></i> <span
-                    class="weui-comment-num">0</span> </span></div>
-            <div class="userinfo"><strong class="nickname">老师</strong> <img class="avatar"
-                                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADs0lEQVRogcVa7ZHjIAx1CSkhJaSElJASXEJKcAcpwSWkhPwHHpTgElxC7sdJnOwQI2TvnmY8O5M16OmDJwHuugMlpXRKKZ2dc5cQwg3A3Xs/AOi999eU0vlIfYeIc+4C4B5jTABmAO/aE2N8AXh476//BXRK6QSgJ9AS3Ey/PQGMBHIAMMYYXwR8beQM4PFr4L331xXwGcCTUuSknYMMm6Qx3vvhx4A75y4SeIzxFUK4aUF/E+/9laLFhkwhhNtRuKWSWXj8vhf4WtYOOiwaAO4C/KMGPKV0CiHcOPfFc9csWtKXo7wX/EN6vQL8TO/XmGiqeZcizkYkK3j2xFzLSeL8nGJMkyGEG/2vXxsXY0xb0ZQp1RwJmfM18FQHZlZUK1Yt3iW6zumrAi8B1UKdUjqJhVddH2LcWYzbTE1psIqdKPwqiyk92PNNrERr5g1g1uqpvitf1ACiiqvzTHk883+v1bWZFcL7m2EVk04A3tYmjYlCw/kyYkV9wvuTNh20KfBNhM5RqW/8+j6HSBNOMWamCJiqsqBqFcMQK306TdCVKvdZmEmcc5dG7F3XdR1V66a2QaR5n38UoXy2AODJrH09p0QLCVBRXKaRlU1Eq9G3jFvrbXFAMY2sbNJCgyWxRpDx5tRl9jEASDtTiCOoom0xbsx6mV8tXd8BLMT53LSlXBjOvYal9z6KhVojsGCv4qpWijUFWHgNtJLHogC2VsPSRJboUddrquQLp4t2takGdF2mtMlIwWNOg0ZZVHDmVev+U3hD7QDpfQsBiLXTf+8vlGIZb638LB8VfC8dttaDPelD46eFvr0VVeRklQjkPteyj5ARzw7fQ6XrSWvvHpA+n2tu7zqgiVX9lLVxrI4XpwS9ZWJtY2ZtHLsubyvL+xYRmuamjsarWmNhwB76LKdfa1FKKZ2oEOZTt5pnOVL0V31ILHeNX3svzflLCTSP0XSVNHZxLxBjfHnvhy3j8W/Pvq1DrIVFmAToovLWjpScJe8F3jIyK/D5nLYaMXH+8sbfy7lhfZVkBd1qDIDn6uBY1/XK80jxTEeCNhjTdo8mwvYG0B99I1MTygRO16dJ/8oTpk2LReRCr90jaCYbzGE0CMSVluXUuyjrSwlrtVboeEpnHZq2tAmZpCFHXIcW7tbmn3BQFgqxrAUTGj8bcM5dBD3/6PXtVykYkrkbwOi9H2j93MnD/LnBx+cJlC7nXwG+Fv5soABs65kAPJxzl9+m56qIT216isADdMlNgM9H6vsDQwYeNVuvb4wAAAAASUVORK5CYII=">
-            </div>
-            <div class="weui-comment-msg"><span class="status"></span> 为什么睡过头</div>
-            <p class="time">2018-10-10 13:13:13 </p></li>
-
-        <li class="weui-comment-item">
-            <div class="weui-comment-li"><span class="check checked"> <i class="weui-comment-icon"></i> <span
-                    class="weui-comment-num">999</span> </span></div>
-            <div class="userinfo"><strong class="nickname">学生B</strong> <img class="avatar"
-                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADs0lEQVRogcVa7ZHjIAx1CSkhJaSElJASXEJKcAcpwSWkhPwHHpTgElxC7sdJnOwQI2TvnmY8O5M16OmDJwHuugMlpXRKKZ2dc5cQwg3A3Xs/AOi999eU0vlIfYeIc+4C4B5jTABmAO/aE2N8AXh476//BXRK6QSgJ9AS3Ey/PQGMBHIAMMYYXwR8beQM4PFr4L331xXwGcCTUuSknYMMm6Qx3vvhx4A75y4SeIzxFUK4aUF/E+/9laLFhkwhhNtRuKWSWXj8vhf4WtYOOiwaAO4C/KMGPKV0CiHcOPfFc9csWtKXo7wX/EN6vQL8TO/XmGiqeZcizkYkK3j2xFzLSeL8nGJMkyGEG/2vXxsXY0xb0ZQp1RwJmfM18FQHZlZUK1Yt3iW6zumrAi8B1UKdUjqJhVddH2LcWYzbTE1psIqdKPwqiyk92PNNrERr5g1g1uqpvitf1ACiiqvzTHk883+v1bWZFcL7m2EVk04A3tYmjYlCw/kyYkV9wvuTNh20KfBNhM5RqW/8+j6HSBNOMWamCJiqsqBqFcMQK306TdCVKvdZmEmcc5dG7F3XdR1V66a2QaR5n38UoXy2AODJrH09p0QLCVBRXKaRlU1Eq9G3jFvrbXFAMY2sbNJCgyWxRpDx5tRl9jEASDtTiCOoom0xbsx6mV8tXd8BLMT53LSlXBjOvYal9z6KhVojsGCv4qpWijUFWHgNtJLHogC2VsPSRJboUddrquQLp4t2takGdF2mtMlIwWNOg0ZZVHDmVev+U3hD7QDpfQsBiLXTf+8vlGIZb638LB8VfC8dttaDPelD46eFvr0VVeRklQjkPteyj5ARzw7fQ6XrSWvvHpA+n2tu7zqgiVX9lLVxrI4XpwS9ZWJtY2ZtHLsubyvL+xYRmuamjsarWmNhwB76LKdfa1FKKZ2oEOZTt5pnOVL0V31ILHeNX3svzflLCTSP0XSVNHZxLxBjfHnvhy3j8W/Pvq1DrIVFmAToovLWjpScJe8F3jIyK/D5nLYaMXH+8sbfy7lhfZVkBd1qDIDn6uBY1/XK80jxTEeCNhjTdo8mwvYG0B99I1MTygRO16dJ/8oTpk2LReRCr90jaCYbzGE0CMSVluXUuyjrSwlrtVboeEpnHZq2tAmZpCFHXIcW7tbmn3BQFgqxrAUTGj8bcM5dBD3/6PXtVykYkrkbwOi9H2j93MnD/LnBx+cJlC7nXwG+Fv5soABs65kAPJxzl9+m56qIT216isADdMlNgM9H6vsDQwYeNVuvb4wAAAAASUVORK5CYII=">
-            </div>
-            <div class="weui-comment-msg"><span class="status"></span> 我做梦梦到上课了，想多听一会</div>
-            <p class="time">2019-10-10 23:59:59 </p></li>-->
-
     </ul>
 
 </div>
