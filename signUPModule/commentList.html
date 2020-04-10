@@ -9,13 +9,13 @@
 
     <script src="../js/zepto.min.js"></script>
     <script>
-        var tree=[{
+        var tree = [{
             "id": "1234",
             "pid": null,
             "ownerId": "aaaa",
             "type": 1,
             "fromId": "12",
-            "fromName": "测试",
+            "fromName": "主席",
             "toId": "13",
             "toName": "一等",
             "likeNum": 0,
@@ -28,21 +28,35 @@
                 "ownerId": "aaaa",
                 "type": 1,
                 "fromId": "12",
-                "fromName": "东方",
+                "fromName": "医生",
                 "toId": "14",
                 "toName": "多大",
                 "likeNum": 0,
                 "content": "啊啊啊",
                 "createTime": "2020-04-05T03:21:11.000+0000",
                 "updateTime": "2020-04-05T03:36:14.000+0000",
-                "children": []
+                "children": [{
+                    "id": "987555",
+                    "pid": "12344",
+                    "ownerId": "aaaa",
+                    "type": 1,
+                    "fromId": "12",
+                    "fromName": "dd",
+                    "toId": "13",
+                    "toName": "多大",
+                    "likeNum": 0,
+                    "content": "三级测试",
+                    "createTime": "2020-04-07T23:31:12.000+0000",
+                    "updateTime": "2020-04-07T23:31:12.000+0000",
+                    "children": []
+                }]
             }, {
                 "id": "987555",
                 "pid": "1234",
                 "ownerId": "aaaa",
                 "type": 1,
                 "fromId": "12",
-                "fromName": "dd",
+                "fromName": "主任",
                 "toId": "13",
                 "toName": "多大",
                 "likeNum": 0,
@@ -51,23 +65,185 @@
                 "updateTime": "2020-04-07T23:31:12.000+0000",
                 "children": []
             }]
-        }];
+        }, {
+            "id": "1234",
+            "pid": null,
+            "ownerId": "aaaa",
+            "type": 1,
+            "fromId": "12",
+            "fromName": "校长",
+            "toId": "13",
+            "toName": "一等",
+            "likeNum": 0,
+            "content": "测试二",
+            "createTime": "2020-04-05T03:19:58.000+0000",
+            "updateTime": "2020-04-07T23:45:06.000+0000",
+            "children": []
+        },
+            {
+                "id": "1234",
+                "pid": null,
+                "ownerId": "aaaa",
+                "type": 1,
+                "fromId": "12",
+                "fromName": "主席",
+                "toId": "13",
+                "toName": "一等",
+                "likeNum": 0,
+                "content": "阿斯顿撒旦",
+                "createTime": "2020-04-05T03:19:58.000+0000",
+                "updateTime": "2020-04-07T23:45:06.000+0000",
+                "children": [{
+                    "id": "12344",
+                    "pid": "1234",
+                    "ownerId": "aaaa",
+                    "type": 1,
+                    "fromId": "12",
+                    "fromName": "医生",
+                    "toId": "14",
+                    "toName": "多大",
+                    "likeNum": 0,
+                    "content": "啊啊啊",
+                    "createTime": "2020-04-05T03:21:11.000+0000",
+                    "updateTime": "2020-04-05T03:36:14.000+0000",
+                    "children": [{
+                        "id": "987555",
+                        "pid": "12344",
+                        "ownerId": "aaaa",
+                        "type": 1,
+                        "fromId": "12",
+                        "fromName": "dd",
+                        "toId": "13",
+                        "toName": "多大",
+                        "likeNum": 0,
+                        "content": "三级测试",
+                        "createTime": "2020-04-07T23:31:12.000+0000",
+                        "updateTime": "2020-04-07T23:31:12.000+0000",
+                        "children": []
+                    }]
+                }, {
+                    "id": "987555",
+                    "pid": "1234",
+                    "ownerId": "aaaa",
+                    "type": 1,
+                    "fromId": "12",
+                    "fromName": "主任",
+                    "toId": "13",
+                    "toName": "多大",
+                    "likeNum": 0,
+                    "content": "3www",
+                    "createTime": "2020-04-07T23:31:12.000+0000",
+                    "updateTime": "2020-04-07T23:31:12.000+0000",
+                    "children": []
+                }]
+            },
+            {
+                "id": "1234",
+                "pid": null,
+                "ownerId": "aaaa",
+                "type": 1,
+                "fromId": "12",
+                "fromName": "主席",
+                "toId": "13",
+                "toName": "一等",
+                "likeNum": 0,
+                "content": "阿斯顿撒旦",
+                "createTime": "2020-04-05T03:19:58.000+0000",
+                "updateTime": "2020-04-07T23:45:06.000+0000",
+                "children": [{
+                    "id": "12344",
+                    "pid": "1234",
+                    "ownerId": "aaaa",
+                    "type": 1,
+                    "fromId": "12",
+                    "fromName": "医生",
+                    "toId": "14",
+                    "toName": "多大",
+                    "likeNum": 0,
+                    "content": "啊啊啊",
+                    "createTime": "2020-04-05T03:21:11.000+0000",
+                    "updateTime": "2020-04-05T03:36:14.000+0000",
+                    "children": [{
+                        "id": "987555",
+                        "pid": "12344",
+                        "ownerId": "aaaa",
+                        "type": 1,
+                        "fromId": "12",
+                        "fromName": "dd",
+                        "toId": "13",
+                        "toName": "多大",
+                        "likeNum": 0,
+                        "content": "三级测试",
+                        "createTime": "2020-04-07T23:31:12.000+0000",
+                        "updateTime": "2020-04-07T23:31:12.000+0000",
+                        "children": []
+                    }]
+                }, {
+                    "id": "987555",
+                    "pid": "1234",
+                    "ownerId": "aaaa",
+                    "type": 1,
+                    "fromId": "12",
+                    "fromName": "大龙",
+                    "toId": "13",
+                    "toName": "多大",
+                    "likeNum": 0,
+                    "content": "3www",
+                    "createTime": "2020-04-07T23:31:12.000+0000",
+                    "updateTime": "2020-04-07T23:31:12.000+0000",
+                    "children": []
+                }]
+            }
+        ];
         $(function () {
             fuckTree();
         });
-        function fuckTree(){
+        var htmlTemp = '';
+
+        function fuckTree() {
             for (let i = 0; i < tree.length; i++) { //最后加上 <ul class="weui-comment">最外层包裹
-                var htmlTemp='';
-                tree[i]
+                htmlTemp +=
+                    '<li class="weui-comment-item">' +
+                    '            <div class="weui-comment-li"><span class="check checked"> <i class="weui-comment-icon"></i> <span' +
+                    '                    class="weui-comment-num">999</span> </span></div>' +
+                    '            <div class="userinfo"><strong class="nickname">' + tree[i].fromName + '</strong> <img class="avatar"' +
+                    '                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADs0lEQVRogcVa7ZHjIAx1CSkhJaSElJASXEJKcAcpwSWkhPwHHpTgElxC7sdJnOwQI2TvnmY8O5M16OmDJwHuugMlpXRKKZ2dc5cQwg3A3Xs/AOi999eU0vlIfYeIc+4C4B5jTABmAO/aE2N8AXh476//BXRK6QSgJ9AS3Ey/PQGMBHIAMMYYXwR8beQM4PFr4L331xXwGcCTUuSknYMMm6Qx3vvhx4A75y4SeIzxFUK4aUF/E+/9laLFhkwhhNtRuKWSWXj8vhf4WtYOOiwaAO4C/KMGPKV0CiHcOPfFc9csWtKXo7wX/EN6vQL8TO/XmGiqeZcizkYkK3j2xFzLSeL8nGJMkyGEG/2vXxsXY0xb0ZQp1RwJmfM18FQHZlZUK1Yt3iW6zumrAi8B1UKdUjqJhVddH2LcWYzbTE1psIqdKPwqiyk92PNNrERr5g1g1uqpvitf1ACiiqvzTHk883+v1bWZFcL7m2EVk04A3tYmjYlCw/kyYkV9wvuTNh20KfBNhM5RqW/8+j6HSBNOMWamCJiqsqBqFcMQK306TdCVKvdZmEmcc5dG7F3XdR1V66a2QaR5n38UoXy2AODJrH09p0QLCVBRXKaRlU1Eq9G3jFvrbXFAMY2sbNJCgyWxRpDx5tRl9jEASDtTiCOoom0xbsx6mV8tXd8BLMT53LSlXBjOvYal9z6KhVojsGCv4qpWijUFWHgNtJLHogC2VsPSRJboUddrquQLp4t2takGdF2mtMlIwWNOg0ZZVHDmVev+U3hD7QDpfQsBiLXTf+8vlGIZb638LB8VfC8dttaDPelD46eFvr0VVeRklQjkPteyj5ARzw7fQ6XrSWvvHpA+n2tu7zqgiVX9lLVxrI4XpwS9ZWJtY2ZtHLsubyvL+xYRmuamjsarWmNhwB76LKdfa1FKKZ2oEOZTt5pnOVL0V31ILHeNX3svzflLCTSP0XSVNHZxLxBjfHnvhy3j8W/Pvq1DrIVFmAToovLWjpScJe8F3jIyK/D5nLYaMXH+8sbfy7lhfZVkBd1qDIDn6uBY1/XK80jxTEeCNhjTdo8mwvYG0B99I1MTygRO16dJ/8oTpk2LReRCr90jaCYbzGE0CMSVluXUuyjrSwlrtVboeEpnHZq2tAmZpCFHXIcW7tbmn3BQFgqxrAUTGj8bcM5dBD3/6PXtVykYkrkbwOi9H2j93MnD/LnBx+cJlC7nXwG+Fv5soABs65kAPJxzl9+m56qIT216isADdMlNgM9H6vsDQwYeNVuvb4wAAAAASUVORK5CYII=">' +
+                    '            </div>' +
+                    '            <div  onclick="replyAlert(event,this)" id='+tree[i].id+' class="weui-comment-msg"><span class="status"></span> ' + tree[i].content + '</div>' +
+                    '            <p class="time">' + tree[i].updateTime + '</p>';
+                if (tree[i].children.length > 0) {
+                    reply(tree[i].children);
+                } else {
+
+                }
+                htmlTemp += '</li>';//结束
             }
+            document.getElementById("dsaasd").innerHTML = htmlTemp;
+        }
+
+        function reply(children) {
+            for (let i = 0; i < children.length; i++) {
+                htmlTemp +=
+                    '<div class="weui-comment-reply">' +
+                    '                <div class="nickname">' + children[i].fromName + ' 回复-> <span >' + children[i].toName + '</span>' + '</div>' +
+                    '                <div  onclick="replyAlert(event,this)" class="weui-comment-msg" id='+children[i].id+'> ' + children[i].content + '</div>' +
+                    '                <p class="time">' + children[i].updateTime + '</p></div>';
+                if (children[i].children.length > 0) {
+                    reply(children[i].children);
+                }
+            }
+        }
+
+        function replyAlert(e,item) {
+            console.log(item);
         }
     </script>
 </head>
 
 <body ontouchstart>
 <div class="page-bd-15">
-    <ul class="weui-comment">
-        <li class="weui-comment-item">
+    <ul class="weui-comment" id="dsaasd">
+        <!--<li class="weui-comment-item">
             <div class="weui-comment-li">
                 <span class="check checked">
                     <i class="weui-comment-icon"></i>
@@ -83,7 +259,8 @@
             <div class="weui-comment-reply">
                 <div class="nickname">学生A回复</div>
                 <div class="weui-comment-msg"> 睡过头了，老师.</div>
-                <p class="time">今天早上</p></div>
+                <p class="time">今天早上</p>
+            </div>
         </li>
         <li class="weui-comment-item">
             <div class="weui-comment-li"><span class="check"> <i class="weui-comment-icon"></i> <span
@@ -101,7 +278,7 @@
                                                                              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADs0lEQVRogcVa7ZHjIAx1CSkhJaSElJASXEJKcAcpwSWkhPwHHpTgElxC7sdJnOwQI2TvnmY8O5M16OmDJwHuugMlpXRKKZ2dc5cQwg3A3Xs/AOi999eU0vlIfYeIc+4C4B5jTABmAO/aE2N8AXh476//BXRK6QSgJ9AS3Ey/PQGMBHIAMMYYXwR8beQM4PFr4L331xXwGcCTUuSknYMMm6Qx3vvhx4A75y4SeIzxFUK4aUF/E+/9laLFhkwhhNtRuKWSWXj8vhf4WtYOOiwaAO4C/KMGPKV0CiHcOPfFc9csWtKXo7wX/EN6vQL8TO/XmGiqeZcizkYkK3j2xFzLSeL8nGJMkyGEG/2vXxsXY0xb0ZQp1RwJmfM18FQHZlZUK1Yt3iW6zumrAi8B1UKdUjqJhVddH2LcWYzbTE1psIqdKPwqiyk92PNNrERr5g1g1uqpvitf1ACiiqvzTHk883+v1bWZFcL7m2EVk04A3tYmjYlCw/kyYkV9wvuTNh20KfBNhM5RqW/8+j6HSBNOMWamCJiqsqBqFcMQK306TdCVKvdZmEmcc5dG7F3XdR1V66a2QaR5n38UoXy2AODJrH09p0QLCVBRXKaRlU1Eq9G3jFvrbXFAMY2sbNJCgyWxRpDx5tRl9jEASDtTiCOoom0xbsx6mV8tXd8BLMT53LSlXBjOvYal9z6KhVojsGCv4qpWijUFWHgNtJLHogC2VsPSRJboUddrquQLp4t2takGdF2mtMlIwWNOg0ZZVHDmVev+U3hD7QDpfQsBiLXTf+8vlGIZb638LB8VfC8dttaDPelD46eFvr0VVeRklQjkPteyj5ARzw7fQ6XrSWvvHpA+n2tu7zqgiVX9lLVxrI4XpwS9ZWJtY2ZtHLsubyvL+xYRmuamjsarWmNhwB76LKdfa1FKKZ2oEOZTt5pnOVL0V31ILHeNX3svzflLCTSP0XSVNHZxLxBjfHnvhy3j8W/Pvq1DrIVFmAToovLWjpScJe8F3jIyK/D5nLYaMXH+8sbfy7lhfZVkBd1qDIDn6uBY1/XK80jxTEeCNhjTdo8mwvYG0B99I1MTygRO16dJ/8oTpk2LReRCr90jaCYbzGE0CMSVluXUuyjrSwlrtVboeEpnHZq2tAmZpCFHXIcW7tbmn3BQFgqxrAUTGj8bcM5dBD3/6PXtVykYkrkbwOi9H2j93MnD/LnBx+cJlC7nXwG+Fv5soABs65kAPJxzl9+m56qIT216isADdMlNgM9H6vsDQwYeNVuvb4wAAAAASUVORK5CYII=">
             </div>
             <div class="weui-comment-msg"><span class="status"></span> 我做梦梦到上课了，想多听一会</div>
-            <p class="time">2019-10-10 23:59:59 </p></li>
+            <p class="time">2019-10-10 23:59:59 </p></li>-->
 
     </ul>
 
