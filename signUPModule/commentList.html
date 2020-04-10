@@ -246,16 +246,17 @@
         }
 
         function issueComment() { //推送评论
-            let tempText = document.getElementById(_comment_content).innerText;
-            if(tempText){
+            let tempText = document.getElementById('_comment_content').innerText;
+            console.log(tempText);
+            if (tempText) {
                 $.ajax({
                         url: "/addComment",
                         data: {
                             //userId: ,
-                            ownerId:itemTemp.ownerId,
-                            toId:itemTemp.id,
-                            content:tempText,
-                            pid:itemTemp.pid
+                            ownerId: itemTemp.ownerId,
+                            toId: itemTemp.id,
+                            content: tempText,
+                            pid: itemTemp.pid
                         },
                         type: "post",
                         success: function (text) {
@@ -263,7 +264,7 @@
                         }
                     }
                 );
-            }else {
+            } else {
 
             }
         }
