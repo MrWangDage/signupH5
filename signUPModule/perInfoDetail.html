@@ -11,18 +11,18 @@
     <script src="../js/zepto.weui.js"></script>
     <script src="../js/php.js"></script>
     <script>
-        $(function(){
-            $(document).on("click","#btn",function(){
+        $(function () {
+            $(document).on("click", "#btn", function () {
                 var user = $("#user").val();
-                if(user==""){
+                if (user == "") {
                     $.toptip("用户名不能为空");
                     return false;
-                }else{
-                    $.toptip("提交成功",'success');
+                } else {
+                    $.toptip("提交成功", 'success');
                 }
             })
             //解决表单控件不能回弹 只有微信ios有这个问题
-            $("input,select,textarea").blur(function(){
+            $("input,select,textarea").blur(function () {
                 setTimeout(() => {
                     const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
                     window.scrollTo(0, Math.max(scrollHeight - 1, 0));
@@ -31,7 +31,7 @@
 
         });
 
-        var countdown=60;
+        var countdown = 60;
 
         function settime(obj) {
 
@@ -39,61 +39,53 @@
             if (countdown == 0) {
                 code.removeAttr('disabled');
                 code.text("获取验证码");
-                countdown =60;
+                countdown = 60;
                 return;
             } else {
                 code.text("重新发送(" + countdown + ")");
-                code.attr('disabled',true);
+                code.attr('disabled', true);
                 countdown--;
             }
-            setTimeout(function() {
-                settime(obj) }, 1000);
+            setTimeout(function () {
+                settime(obj)
+            }, 1000);
 
         }
 
-        function getcode(){
-            $("#code").attr("src","../php/code.php?random="+Math.random());
+        function getcode() {
+            $("#code").attr("src", "../php/code.php?random=" + Math.random());
         };
 
         function textarea(input) {
             var content = $(input);
-            var max =  content.next().find('i') .text();
+            var max = content.next().find('i').text();
             var value = content.val();
-            if (value.length>0) {
+            if (value.length > 0) {
 
-                value = value.replace(/\n|\r/gi,"");
+                value = value.replace(/\n|\r/gi, "");
                 var len = value.length;
-                content.next().find('span').text(len) ;
-                if(len>max){
+                content.next().find('span').text(len);
+                if (len > max) {
                     content.next().addClass('f-red');
-                }else{
+                } else {
                     content.next().removeClass('f-red');
                 }
             }
         }
 
-        function cleartxt(obj){
+        function cleartxt(obj) {
             $(obj).prev().find('.weui-input').val("");
             return false;
         }
 
-        function cleararea(obj){
+        function cleararea(obj) {
             $(obj).prev().find('.weui-textarea').val("").next().find("span").text(0);
             return false;
         }
-        $("#birthday").datetimePicker({
-            title: '生日',
-            years:range(1940,2030),
-            times:function(){return [];},
-            parse:function(str){
-                return str.split("-");
-            },
-            onChange: function (picker, values, displayValues) {
-                console.log(values);
-            }
-        });
+
 
     </script>
+
 </head>
 
 <body ontouchstart>
@@ -128,12 +120,6 @@
 
     </div>
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label for="time-format" class="weui-label">自定义格式</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" id="time-format" type="text" value="2012年12月12日 12时13分">
-        </div>
-    </div>
-    <div class="weui-cell">
         <div class="weui-cell__hd"><label for="time-format" class="weui-label">生日</label></div>
         <div class="weui-cell__bd">
             <input class="weui-input" id="birthday" type="text" value="2019-02-01">
@@ -145,15 +131,7 @@
             <input class="weui-input" id="end" type="text" value="">
         </div>
     </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd">
-            <label class="weui-label">所在地区</label>
-        </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入地区" type="tel">
-        </div>
 
-    </div>
     <div class="weui-cell">
         <div class="weui-cell__hd">
             <label class="weui-label">签名</label>
@@ -165,9 +143,6 @@
     </div>
 
 </div>
-
-
-
 
 
 <div class="weui-cells weui-cells_form">
@@ -194,7 +169,6 @@
 <div class="weui-cells__tips">底部说明文字底部说明文字</div>
 
 
-
 <div class="weui-btn-area">
     <a class="weui-btn weui-btn_primary" href="javascript:" id="btn">确定</a>
 </div>
@@ -210,4 +184,32 @@
     <p class="weui-footer__text">Copyright &copy; Yoby</p>
 </div>
 </body>
+<script src="../js/picker.city.js"></script>
+<script>
+
+    $("#birthday").datetimePicker({
+        title: '生日',
+        years: range(1940, 2030),
+        times: function () {
+            return [];
+        },
+        parse: function (str) {
+            return str.split("-");
+        },
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+
+    $("#end").cityPicker({
+        title: "选择目的地"
+    });
+    $("#home-city").cityPicker({
+        title: "选择目的地",
+        showDistrict: false,
+        onChange: function (picker, values, displayValues) {
+            console.log(values, displayValues);
+        }
+    });
+</script>
 </html>
