@@ -33,6 +33,22 @@
 
         });
 
+        $(function () {
+            $('.collapse .js-category').click(function () {
+                $parent = $(this).parent('li');
+                if ($parent.hasClass('js-show')) {
+                    $parent.removeClass('js-show');
+                    $(this).children('i').removeClass('icon-35').addClass('icon-74');
+                } else {
+                    $parent.siblings().removeClass('js-show');
+                    $parent.addClass('js-show');
+                    $(this).children('i').removeClass('icon-74').addClass('icon-35');
+                    $parent.siblings().find('i').removeClass('icon-35').addClass('icon-74');
+                }
+            });
+
+        });
+
 
     </script>
 
@@ -53,7 +69,25 @@
             </div>
         </div>
         <div class="weui-tab__panel" height="100%">
-            <div id="tab1" class="weui-tab__content" style="display: block;">1111</div>
+            <div id="tab1" class="weui-tab__content" style="display: block;">
+                <div class="page-bd">
+                    <ul class="collapse">
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item"><i class="icon icon-2 f20"></i> 和平精英</div>
+                                <i class="icon icon-74"></i>
+                            </div>
+                            <div class="page-category js-categoryInner">
+
+                                <div class="weui-cells page-category-content">
+                                    <p class="content">美女是一个汉语词汇，拼音是měi nǚ，指容貌姣好、仪态优雅的女子。中国古代关于美女的形容词和诗词歌赋众多，形成了丰富的美学资料.</p>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div id="tab2" class="weui-tab__content" height="100%">
                 <iframe src="../signUPModule/styled-card.html" width="100%" height="800px" frameborder="0">
 
