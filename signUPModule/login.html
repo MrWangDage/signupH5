@@ -26,8 +26,9 @@
                             },
                             type: "post",
                             success: function (text) {
-
                                 $.toptip("登录成功", 'success');
+                                window.close();
+                                window.location.href='../signUPModule/js5.html';
                             }
                         }
                     );
