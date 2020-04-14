@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="../css/weuix.css"/>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.weui.js"></script>
+    <script>
+        $(function () {
+            $(document).on("click", "#btn", function () {
+                var user = $("#user").val();
+                if (user == "") {
+                    $.toptip("用户名不能为空");
+                    return false;
+                } else {
+                    $.toptip("提交成功", 'success');
+                }
+            })
+            //解决表单控件不能回弹 只有微信ios有这个问题
+            $("input,select,textarea").blur(function () {
+                setTimeout(() => {
+                    const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+                    window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+                }, 100);
+            })
+
+        });
+
+        var countdown = 60;
+
+        function settime(obj) {
+
+            var code = $(obj);
+            if (countdown == 0) {
+                code.removeAttr('disabled');
+                code.text("获取验证码");
+                countdown = 60;
+                return;
+            } else {
+                code.text("重新发送(" + countdown + ")");
+                code.attr('disabled', true);
+                countdown--;
+            }
+            setTimeout(function () {
+                settime(obj)
+            }, 1000);
+
+        }
+
+        function getcode() {
+            $("#code").attr("src", "../php/code.php?random=" + Math.random());
+        };
+
+        function textarea(input) {
+            var content = $(input);
+            var max = content.next().find('i').text();
+            var value = content.val();
+            if (value.length > 0) {
+
+                value = value.replace(/\n|\r/gi, "");
+                var len = value.length;
+                content.next().find('span').text(len);
+                if (len > max) {
+                    content.next().addClass('f-red');
+                } else {
+                    content.next().removeClass('f-red');
+                }
+            }
+        }
+
+        function cleartxt(obj) {
+            $(obj).prev().find('.weui-input').val("");
+            return false;
+        }
+
+        function cleararea(obj) {
+            $(obj).prev().find('.weui-textarea').val("").next().find("span").text(0);
+            return false;
+        }
+
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="page-hd">
+    <h1 class="page-hd-title">
+        登录
+    </h1>
+    <p class="page-hd-desc"></p>
+</div>
+
+
+<div class="weui-cells weui-cells_form">
+
+    <div class="weui-cells">
+
+        <div class="weui-cell weui-cell_select weui-cell_select-before">
+            <div class="weui-cell__hd">
+                <select class="weui-select" name="select2">
+                    <option value="1">+86</option>
+                </select>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" pattern="[0-9]*" placeholder="请输入号码" type="number">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label" >密码</label></div>
+        <div class="weui-cell__bd" id="qqNum">
+            <input class="weui-input" pattern="[0-9]*" placeholder="请输入密码" type="number">
+        </div>
+    </div>
+<!--    <div class="weui-cell weui-cell_vcode">-->
+<!--        <div class="weui-cell__hd">-->
+<!--            <label class="weui-label">验证码</label>-->
+<!--        </div>-->
+<!--        <div class="weui-cell__bd">-->
+<!--            <input class="weui-input" placeholder="验证码" type="number">-->
+<!--        </div>-->
+<!--        <div class="weui-cell__ft">-->
+<!--            <button class="weui-vcode-btn" onclick="settime(this)">获取验证码</button>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+
+
+
+
+<div class="weui-btn-area">
+    <a class="weui-btn weui-btn_primary" href="javascript:" id="btn">确定</a>
+</div>
+
+
+<br>
+<br>
+
+<div class="weui-footer weui-footer_fixed-bottom">
+    <p class="weui-footer__links">
+        <a href="../index.html" class="weui-footer__link">WeUI首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright &copy; Yoby</p>
+</div>
+</body>
+</html>
