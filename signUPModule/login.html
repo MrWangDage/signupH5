@@ -12,12 +12,26 @@
     <script>
         $(function () {
             $(document).on("click", "#btn", function () {
-                var user = $("#user").val();
-                if (user == "") {
-                    $.toptip("用户名不能为空");
+                var _number = $("#_number").val();
+                var _passwd = $("#_passwd").val();
+                if (_number == ""||_passwd=='') {
+                    $.toptip("手机号不能为空");
                     return false;
                 } else {
-                    $.toptip("提交成功", 'success');
+                    $.ajax({
+                            url: "/login",
+                            data: {
+                                _number: _number,
+                                _passwd: _passwd
+                            },
+                            type: "post",
+                            success: function (text) {
+
+                                $.toptip("登录成功", 'success');
+                            }
+                        }
+                    );
+
                 }
             })
             //解决表单控件不能回弹 只有微信ios有这个问题
@@ -105,31 +119,29 @@
                 </select>
             </div>
             <div class="weui-cell__bd">
-                <input class="weui-input" pattern="[0-9]*" placeholder="请输入号码" type="number">
+                <input id="_number" class="weui-input" pattern="[0-9]*" placeholder="请输入号码" type="number">
             </div>
         </div>
     </div>
     <br>
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label" >密码</label></div>
+        <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
         <div class="weui-cell__bd" id="qqNum">
-            <input class="weui-input" pattern="[0-9]*" placeholder="请输入密码" type="number">
+            <input id="_passwd" class="weui-input" pattern="[0-9]*" placeholder="请输入密码" type="number">
         </div>
     </div>
-<!--    <div class="weui-cell weui-cell_vcode">-->
-<!--        <div class="weui-cell__hd">-->
-<!--            <label class="weui-label">验证码</label>-->
-<!--        </div>-->
-<!--        <div class="weui-cell__bd">-->
-<!--            <input class="weui-input" placeholder="验证码" type="number">-->
-<!--        </div>-->
-<!--        <div class="weui-cell__ft">-->
-<!--            <button class="weui-vcode-btn" onclick="settime(this)">获取验证码</button>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--    <div class="weui-cell weui-cell_vcode">-->
+    <!--        <div class="weui-cell__hd">-->
+    <!--            <label class="weui-label">验证码</label>-->
+    <!--        </div>-->
+    <!--        <div class="weui-cell__bd">-->
+    <!--            <input class="weui-input" placeholder="验证码" type="number">-->
+    <!--        </div>-->
+    <!--        <div class="weui-cell__ft">-->
+    <!--            <button class="weui-vcode-btn" onclick="settime(this)">获取验证码</button>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </div>
-
-
 
 
 <div class="weui-btn-area">
