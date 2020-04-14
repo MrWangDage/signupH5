@@ -19,7 +19,7 @@
                      if(index==0){
                          // $("#c"+index).load('../signUPModule/Carousel.html');
                      }else if(index==1){
-                         $("#c"+index).html("我是第2个1")
+                         // $("#c"+index).html("我是第2个1")
                      }
 
                         console.log(index)
@@ -49,7 +49,34 @@
 
                 </iframe>
             </div>
-            <div id="c1" class="weui-tab__content">日本</div>
+            <div id="c1" class="weui-tab__content">
+                <div class='page-bd-15'>
+                    <a href="javascript:;" class="weui-btn weui-btn_primary open-popup" data-target="#half">显示底部的Popup</a>
+                </div>
+
+                <div id="half" class='weui-popup__container popup-bottom'>
+                    <div class="weui-popup__overlay"></div>
+                    <div class="weui-popup__modal">
+                        <div class="toolbar">
+                            <div onclick="issueComment()" class="toolbar-inner">
+                                <a href="javascript:;" class="picker-button close-popup">发布并关闭</a>
+                                <h1 id="_comment_content" class="title">评论</h1>
+                            </div>
+                        </div>
+                        <div class="modal-content">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">
+                                    <label class="weui-label">内容</label>
+                                </div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input" placeholder="请输入评论内容" type="tel">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div  id="c2" class="weui-tab__content">美国</div>
             <div id="c3"  class="weui-tab__content">
                 <iframe src="../signUPModule/personData.html" width="100%" height="900px" frameborder="0">
@@ -68,7 +95,7 @@
             </a>
             <a href="javascript:;" class="weui-tabbar__item">
                 <i class="icon icon-28 f27 weui-tabbar__icon"></i>
-                <p class="weui-tabbar__label">通讯录</p>
+                <p class="weui-tabbar__label">报名</p>
             </a>
             <a href="javascript:;" class="weui-tabbar__item">
                     <span style="display: inline-block;position: relative;">

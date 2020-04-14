@@ -19,7 +19,7 @@
                     return false;
                 } else {
                     $.ajax({
-                            url: "/login",
+                            url: "http://localhost/login",
                             data: {
                                 _number: _number,
                                 _passwd: _passwd
@@ -27,6 +27,8 @@
                             type: "post",
                             success: function (text) {
                                 $.toptip("登录成功", 'success');
+                                window.localStorage.setItem("token",text.token);
+                                window.localStorage.setItem("token",text.expire);
                                 window.close();
                                 window.location.href='../signUPModule/js5.html';
                             }
