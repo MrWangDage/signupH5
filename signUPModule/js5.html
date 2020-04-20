@@ -56,14 +56,14 @@
 
                 <div id="half" class='weui-popup__container popup-bottom'>
                     <div class="weui-popup__overlay"></div>
-                    <div class="weui-popup__modal">
+                    <div class="weui-popup__modal" >
                         <div class="toolbar">
                             <div onclick="issueComment()" class="toolbar-inner">
                                 <a href="javascript:;" class="picker-button close-popup">发布并关闭</a>
                                 <h1 id="_comment_content" class="title">评论</h1>
                             </div>
                         </div>
-                        <div class="modal-content">
+                        <div class="modal-content" >
                             <div class="weui-cell">
                                 <div class="weui-cell__hd">
                                     <label class="weui-label">内容</label>
@@ -73,11 +73,21 @@
                                 </div>
 
                             </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label" >qq号</label></div>
+                                <div class="weui-cell__bd" id="qqNum">
+                                    <input class="weui-input" pattern="[0-9]*" placeholder="请输入qq号" type="number">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div  id="c2" class="weui-tab__content">美国</div>
+            <div  id="c2" class="weui-tab__content">
+                <iframe src="../signUPModule/shijie.html" width="100%" height="900px" frameborder="0">
+
+                </iframe>
+            </div>
             <div id="c3"  class="weui-tab__content">
                 <iframe src="../signUPModule/personData.html" width="100%" height="900px" frameborder="0">
 
@@ -102,7 +112,7 @@
                         <i class="icon icon-29 f27 weui-tabbar__icon"></i>
                         <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
                     </span>
-                <p class="weui-tabbar__label">发现</p>
+                <p class="weui-tabbar__label">视界</p>
             </a>
             <a href="javascript:;" class="weui-tabbar__item ">
                 <i class="icon icon-30 f27 weui-tabbar__icon" ></i>
