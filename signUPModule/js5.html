@@ -10,6 +10,24 @@
     <script src="../js/zepto.min.js"></script>
     <script src="../js/zepto.weui.js"></script>
      <script>
+         $(function () {
+             debugger
+             let tempToken=window.localStorage.getItem("token");
+             if(!tempToken||tempToken=="underfined"||tempToken=='null'||tempToken==''){
+                 window.location.href='../signUPModule/login.html';
+             }
+             console.log("用戶信息"+JSON.stringify(window.localStorage));
+             // $.ajax({
+             //     url: "/api/login",
+             //     data: {
+             //         userId:  e.id
+             //     },
+             //     type: "post",
+             //     success: function (text) {
+             //
+             //     }}
+             // )
+         })
          $(function(){
 
              $('.weui-tab').tab({
